@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+	<script src="jquery.getUserMedia.js"></script>
+
+	<style>
+		body{
+			font-family:verdana;
+		}
+		#container, #snapshot{
+			width:400px;
+			height:300px;
+			display: inline-block;
+			vertical-align: top;
+			border:3px solid #ddd;
+		}
+		#snapshot{
+			border:3px dashed #ddd;
+			font-size:3em;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>getUserMedia</h1>
+	<p>Getting the user Media is pretty easy!</p>
+
+	<div id="container"></div>
+	<div id="snapshot">Click here to take a snapshot</div>
+
+	<script>
+		// Initiate the UserMedia
+		var $media = $('#container').getUserMedia();
+
+		$('#snapshot').click(function(){
+			$(this).css({
+				background : 'url('+ $media.getUserMedia('snapshot') +')'
+			});
+		});
+
+	</script>
+</body>
