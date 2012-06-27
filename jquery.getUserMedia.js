@@ -4,7 +4,7 @@
 // @copyright Andrew Dodson
 // @license MIT
 //
-// This is based on 
+// This is based on...
 //
 (function($){
 
@@ -67,13 +67,13 @@
 				w = $(this).innerWidth();
 
 
-			// WebRTC? 
-			if( navigator.getUserMedia ){
+			// WebRTC?
+			if( false && navigator.getUserMedia ){
 
 				var box = this;
 
 				// success
-				function _success(stream){
+				var _success = function(stream){
 
 					// Remove any content within the child
 					$(box).empty();
@@ -102,7 +102,7 @@
 					};
 
 					success();
-				}
+				};
 
 				// Call it?
 				try{
@@ -126,16 +126,15 @@
 					swffile	: swf,
 					mode	: 'callback',
 					width	: w || 215,
-					height	: h || 138
+					height	: h || 138,
+					callback : 'userMedia' // define the function on the window namespace to be used to proxy requests to this API from Flash.
 				};
-				// Create a random unique ID that we define our properties against
-
 
 				// Remove any content within the child
 				$(this).empty();
 
 				// Inject a flash Object into the element in the page
-				$('<object id="XwebcamXobjectX" class="userMedia" type="application/x-shockwave-flash" data="' + options.swffile + '" width="' + options.width + '" height="' + options.height + '"><param name="movie" value="' + options.swffile + '" /><param name="FlashVars" value="mode=' + options.mode + '&amp;quality=' + options.quality + '" /><param name="allowScriptAccess" value="always" /></object>').appendTo(this);
+				$('<object id="XwebcamXobjectX" class="userMedia" type="application/x-shockwave-flash" data="' + options.swffile + '" width="' + options.width + '" height="' + options.height + '"><param name="movie" value="' + options.swffile + '" /><param name="FlashVars" value="mode=' + options.mode + '&amp;quality=' + options.quality + '&amp;callback=' + options.callback + '" /><param name="allowScriptAccess" value="always" /></object>').appendTo(this);
 
 			}
 		});
