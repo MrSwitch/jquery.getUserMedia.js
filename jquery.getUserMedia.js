@@ -68,7 +68,7 @@
 
 
 			// WebRTC?
-			if( false && navigator.getUserMedia ){
+			if( navigator.getUserMedia ){
 
 				var box = this;
 
